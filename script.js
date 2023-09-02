@@ -21,40 +21,60 @@ function rpsRound(playerSelection, computerSelection) { //plays a round of RPS a
     
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {                //get results if player chose rock
-            return 'Tie! Rock vs Rock!'
+            return 2
         }
         else if (computerSelection === 'paper') {
-            return 'You lose! Paper beats Rock!'
+            return 0
         }
         else {
-            return 'You Win! Rock beats Scissors!'
+            return 1
         }      
     }
 
     if (playerSelection === 'paper') {                    //get results if player chose paper
         if (computerSelection === 'rock') { 
-            return 'You Win! Paper beats Rock!'
+            return 1
         }
         else if (computerSelection === 'paper') {
-            return 'Tie! Paper vs Paper!'
+            return 2
         }
         else {
-            return 'You Lose! Scissors beat Paper!'
+            return 0
         }
     }
 
     if (playerSelection === 'scissors') {                  //get results if player chose scissors
         if (computerSelection === 'rock') {
-            return 'You Lose! Rock beats Scissors!'
+            return 0
         }
         else if (computerSelection === 'paper') {
-            return 'You Win! Scissors beat Paper!'
+            return 1
         }
         else {
-            return 'Tie! Scissors vs Scissors!'
+            return 2
         }
     }
 }
 
-let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();      //ask user for their choice
-console.log(rpsRound(playerSelection, getComputerChoice));
+function game() {    
+    let scoreComputer = 0;
+    let scorePlayer = 0;
+    for (i = 0; i < 5; i++) {
+        let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();      //ask user for their choice
+        let result = rpsRound(playerSelection, getComputerChoice);
+        if (result == 0) {
+            scoreComputer = scoreComputer + 1;
+        }
+        else if (result == 1) {
+            scorePlayer = scorePlayer + 1;
+        }        
+    }
+    if (scoreComputer > scorePlayer) {
+        console.log('Computer Wins!!!')
+    }
+    else {
+        console.log('YOU WIN!!! ' + `Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer}`);
+    }
+}
+
+game();
