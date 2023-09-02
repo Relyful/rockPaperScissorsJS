@@ -15,6 +15,10 @@ function getComputerChoice() {
 }
 
 function rpsRound(playerSelection, computerSelection) { //plays a round of RPS and returns winner
+    if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+        return 'Make a valid choice!'
+    }
+    
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {                //get results if player chose rock
             return 'Tie! Rock vs Rock!'
@@ -52,5 +56,5 @@ function rpsRound(playerSelection, computerSelection) { //plays a round of RPS a
     }
 }
 
-
-console.log(rpsRound());
+let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();      //ask user for their choice
+console.log(rpsRound(playerSelection, getComputerChoice));
