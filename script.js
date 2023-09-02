@@ -61,7 +61,7 @@ function game() {
     let scorePlayer = 0;
     for (i = 0; i < 5; i++) {
         let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();      //ask user for their choice
-        let result = rpsRound(playerSelection, getComputerChoice);
+        let result = rpsRound(playerSelection, getComputerChoice());
         if (result == 0) {
             scoreComputer = scoreComputer + 1;
         }
@@ -70,7 +70,7 @@ function game() {
         }        
     }
     if (scoreComputer > scorePlayer) {
-        console.log('Computer Wins!!!')
+        console.log('Computer Wins!!!' + `Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer}`)
     }
     else {
         console.log('YOU WIN!!! ' + `Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer}`);
