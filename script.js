@@ -1,8 +1,7 @@
 function getComputerChoice() {
     let computerChoice;
     let x = Math.floor(Math.random() * 100); //get number between 0 and 99 to be used in computers decision
-    console.log(x);
-
+    
     if (x < 32) {
         return 'rock';
     }
@@ -18,7 +17,7 @@ function rpsRound(playerSelection, computerSelection) { //plays a round of RPS a
     if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
         return 'Make a valid choice!'
     }
-    
+    console.log(`Computer chose: ${computerSelection}.`)
     if (playerSelection === 'rock') {
         if (computerSelection === 'rock') {                //get results if player chose rock
             return 2
@@ -56,25 +55,32 @@ function rpsRound(playerSelection, computerSelection) { //plays a round of RPS a
     }
 }
 
-function game() {    
-    let scoreComputer = 0;
-    let scorePlayer = 0;
-    for (i = 0; i < 5; i++) {
-        let playerSelection = prompt('Rock, paper or scissors?').toLowerCase();      //ask user for their choice
-        let result = rpsRound(playerSelection, getComputerChoice());
-        if (result == 0) {
-            scoreComputer = scoreComputer + 1;
-        }
-        else if (result == 1) {
-            scorePlayer = scorePlayer + 1;
-        }        
+const btnRock = document.querySelector('#rock');
+const btnPaper = document.querySelector('#paper');
+const btnScissors = document.querySelector('#scissors');
+
+    
+let scoreComputer = 0;
+let scorePlayer = 0;
+let scoreTie = 0;
+function game(playerSelection) {
+    let result = rpsRound(playerSelection, getComputerChoice());
+    if (result == 0) {
+        scoreComputer = scoreComputer + 1;
+        console.log('Computer wins!!!');
     }
-    if (scoreComputer > scorePlayer) {
-        console.log('Computer Wins!!!' + `Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer}`)
+    else if (result == 1) {
+        scorePlayer = scorePlayer + 1;
+        console.log('Player wins!!!');
     }
     else {
-        console.log('YOU WIN!!! ' + `Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer}`);
+        scoreTie = scoreTie + 1;
+        console.log('Tie!!!');
     }
+    console.log(`Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer} ` + `Ties: ${scoreTie} `);
 }
 
-game();
+// game();
+btnRock.addEventListener('click', function() {game('rock')});
+btnPaper.addEventListener('click', function() { game('paper')});
+btnScissors.addEventListener('click', function() { game('scissors')});
