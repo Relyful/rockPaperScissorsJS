@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500;800&family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap" rel="stylesheet">
     <title>Rock Paper Scissors!</title>
 </head>
 <body>
     <div class="container">
-        <button id = "rock">Rock</button>
-        <button id = "paper">Paper</button>
-        <button id = "scissors">Scissors</button>
+        <div class="header">
+            <h1>RPS</h1>
+        </div>
+        <div class="gameArea">
+            <div class="playerScore">
+                Player Score
+                <div class="playerBoard">0</div>
+            </div>
+            <div class="button">
+                <button id = "rock">Rock</button>
+                <button id = "paper">Paper</button>
+                <button id = "scissors">Scissors</button>
+            </div>
+            <div class="computerScore">
+                Computer Score
+                <div class="computerBoard">0</div>
+            </div>
+        </div>
+        <div class="roundResult">
+            First to 5 wins!!!
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

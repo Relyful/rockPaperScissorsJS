@@ -59,6 +59,10 @@ const btnRock = document.querySelector('#rock');
 const btnPaper = document.querySelector('#paper');
 const btnScissors = document.querySelector('#scissors');
 
+const playerBoard = document.querySelector('.playerBoard');
+const computerBoard = document.querySelector('.computerBoard');
+const roundResult = document.querySelector('.roundResult');
+
     
 let scoreComputer = 0;
 let scorePlayer = 0;
@@ -67,17 +71,39 @@ function game(playerSelection) {
     let result = rpsRound(playerSelection, getComputerChoice());
     if (result == 0) {
         scoreComputer = scoreComputer + 1;
-        console.log('Computer wins!!!');
+        computerBoard.textContent = `${scoreComputer}`;
+        roundResult.textContent = 'Computer wins!!!';
+        if (scoreComputer === 5) {            
+            scoreComputer = 0;
+            scorePlayer = 0;
+            scoreTie = 0;
+            roundResult.textContent = 'First to 5 wins!!!';
+            alert('Computer won! Better luck next time!');
+            computerBoard.textContent = `${scoreComputer}`;
+            playerBoard.textContent = `${scorePlayer}`;
+        }
     }
     else if (result == 1) {
         scorePlayer = scorePlayer + 1;
-        console.log('Player wins!!!');
+        playerBoard.textContent = `${scorePlayer}`;
+        roundResult.textContent = 'Player wins!!!';
+        if (scorePlayer === 5) {            
+            scoreComputer = 0;
+            scorePlayer = 0;
+            scoreTie = 0;
+            roundResult.textContent = 'First to 5 wins!!!';
+            alert('You Win!!!');
+            computerBoard.textContent = `${scoreComputer}`;
+            playerBoard.textContent = `${scorePlayer}`;
+        }
     }
     else {
         scoreTie = scoreTie + 1;
-        console.log('Tie!!!');
+        roundResult.textContent = 'Tie!!!';
     }
-    console.log(`Player score: ${scorePlayer} ` + `Computer score: ${scoreComputer} ` + `Ties: ${scoreTie} `);
+
+    
+    
 }
 
 // game();
