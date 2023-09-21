@@ -30,16 +30,16 @@ body {
 .button {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;    
+    justify-content: space-around;
+    flex-basis: 800px;  
+    /* padding: 0 100px;   */
+    flex: 1 auto;
 }
 
 .button button {
     font-family: inherit;
     font-weight: 400;
     font-size: 20px;
-}
-
-.button button {
     padding: 20px 50px;
     border-radius: 10px;
     background-color: aqua;
@@ -55,7 +55,7 @@ body {
 
 .gameArea {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 100px;
     margin-bottom: 60px;
 }
@@ -65,6 +65,7 @@ body {
     flex-direction: column;
     text-align: center;
     font-size: large;
+    flex: 2 auto;
 }
 
 .playerBoard, .computerBoard {
